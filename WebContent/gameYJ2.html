@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="EUC-KR">
+      <title>Insert title here</title>
+
+   </head>
+   
+   <body>
+      <input type="text" id="choice" />
+      <input type="button" onclick="goGame()" value="도전!"/>
+      <br>
+      
+      <script type="text/javascript">
+      
+         function userPrint(choice){
+            
+            var u_Choice = choice;
+            //image
+            var imgNode = document.createElement("img");
+            imgNode.setAttribute("id", "user");
+            
+            if(u_Choice=='가위'){
+               imgNode.setAttribute("src", "img/scissors.jpg");
+               imgNode.setAttribute("width", 100);
+               imgNode.setAttribute("height", 100);
+            }else if(u_Choice=='바위'){
+               imgNode.setAttribute("src", "img/rock.jpg");
+               imgNode.setAttribute("width", 100);
+               imgNode.setAttribute("height", 100);
+            }else if(u_Choice=="보"){
+               imgNode.setAttribute("src", "img/paper.jpg");
+               imgNode.setAttribute("width", 100);
+               imgNode.setAttribute("height", 100);
+            }else{
+               console.log("fuck you ^^");
+            }
+            return document.body.appendChild(imgNode);
+         }         
+         
+            //컴퓨터 버전
+         //1.컴퓨터 선택
+            function comChoice(){
+            var comChoice = Math.floor(Math.random()*3)+1;
+   
+            if(comChoice==1){
+                 comChoice="바위"
+              }else if(comChoice==2){
+                  comChoice="가위"
+              }else if(comChoice==3){
+                  comChoice="보"
+              }
+            console.log("컴퓨터 : " + comChoice);
+
+            return comChoice;
+            };
+            
+         //2.컴퓨터 선택 출력
+         function comPrint(compChoice){
+            var c_Choice = compChoice;
+            
+            var imgNode = document.createElement("img");
+            imgNode.setAttribute("id", "com");
+            
+            if(c_Choice=="가위"){
+               imgNode.setAttribute("src", "img/scissors.jpg");
+               imgNode.setAttribute("width", 100);
+               imgNode.setAttribute("height", 100);
+            }else if(c_Choice=="바위"){
+               imgNode.setAttribute("src", "img/rock.jpg");
+               imgNode.setAttribute("width", 100);
+               imgNode.setAttribute("height", 100);
+            }else if(c_Choice=="보"){
+               imgNode.setAttribute("src", "img/paper.jpg");
+               imgNode.setAttribute("width", 100);
+               imgNode.setAttribute("height", 100);
+            }
+            
+            return document.body.appendChild(imgNode);
+         }
+         
+         function versePrint(u_Choice, c_Choice) {
+            var imgNode = document.createElement("img");
+            imgNode.setAttribute("id", "verse");
+            
+            if(u_Choice == c_Choice){
+               imgNode.setAttribute("src", "img/draw.jpg");
+               imgNode.setAttribute("width", 100);
+               imgNode.setAttribute("height", 100);   
+            }else if(u_Choice=="바위"){
+               if(c_Choice=="가위"){
+                  imgNode.setAttribute("src", "img/win.jpg");
+                  imgNode.setAttribute("width", 100);
+                  imgNode.setAttribute("height", 100);
+               }else if(c_Choice=="보"){
+                  imgNode.setAttribute("src", "img/lose.jpg");
+                  imgNode.setAttribute("width", 100);
+                  imgNode.setAttribute("height", 100);
+               }
+            }else if(u_Choice=="보"){
+               if(c_Choice=="바위"){
+                  imgNode.setAttribute("src", "img/win.jpg");
+                  imgNode.setAttribute("width", 100);
+                  imgNode.setAttribute("height", 100);
+               }else if(c_Choice=="가위"){
+                  imgNode.setAttribute("src", "img/lose.jpg");
+                  imgNode.setAttribute("width", 100);
+                  imgNode.setAttribute("height", 100);
+               }
+            }else if(u_Choice=="가위"){
+               if(c_Choice=="보"){
+                  imgNode.setAttribute("src", "img/win.jpg");
+                  imgNode.setAttribute("width", 100);
+                  imgNode.setAttribute("height", 100);
+               }else if(c_Choice=="바위"){
+                  imgNode.setAttribute("src", "img/lose.jpg");
+                  imgNode.setAttribute("width", 100);
+                  imgNode.setAttribute("height", 100);
+               }
+            }
+            console.log("사용자 : "+ u_Choice + "  컴퓨터 : "+c_Choice);
+            
+            return document.body.appendChild(imgNode);
+         }
+         
+            function goGame(){
+               
+               var myChoice = document.getElementById("choice").value;
+               console.log("사용자 입력 : " + myChoice);
+               
+               var compChoice = comChoice();
+               
+               userPrint(myChoice);
+               versePrint(myChoice,compChoice);
+            comPrint(compChoice);
+            
+            }
+         
+      </script>
+      
+      
+   </body>
+</html>
+<!-- getElementById 처럼 선택자를 사용할 때는 <head>안에 선언하면 스크립트 선택자가 먼저 수행됨
+   그래서 문서 내의 다른 객체를 선택할 수 없게 된다 -> undefined/null 등이 뜨는 이유.
+   아래에 선언하거나, <head> 태그에 선언하고 싶다면 window.onload=function(){ ... }으로 문서를 읽고난 다음 자동으로 호출되도록 선언.
+ -->

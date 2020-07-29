@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+		<script type="text/javascript">
+		
+		var objDate1 = new Date();	//시스템 날짜를 이용한 객체생성
+		var objDate2 = new Date(2010, 10, 10);					//2010년 11월 10일
+		var objDate3 = new Date(2010, 10, 10, 10, 10, 10, 100);	//2010년 11월 10일 10시 10분 10초 100분
+		console.log(objDate1);
+		console.log(objDate2);
+		console.log(objDate3);
+		
+		document.write(objDate1); 
+		
+		
+		function getNowDate() {
+						var nowDate = new Date();
+						var dayArr = new Array('일', '월', '화', '수', '목', '금', '토');
+						var print = ""; 
+							print += nowDate.getFullYear() + "년 ";
+							print += (nowDate.getMonth() + 1) + "월 ";
+							print += nowDate.getDate() + "일 ";
+							print += dayArr[nowDate.getDay()]+ "요일 ";
+							print += nowDate.getHours()+ "시 ";
+							print += nowDate.getMinutes()+ "분 ";
+							print += nowDate.getSeconds()+ "초 ";
+						
+						return print;
+					}
+		
+		
+		var nowIntervalId = setInterval(function(){
+			console.log(getNowDate());
+			document.write(objDate1);
+		}, 1000);
+		/*
+		var nowTimeout = setTimeout(function(){
+			clearInterval(nowIntervalId);
+			console.log("종료!");
+		}, 5000); 
+		*/
+		
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

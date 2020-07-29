@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8" />
+      <title>Insert title here</title>
+   </head>
+   <body>
+      <input type="text"  id="userHand" />
+      <input type="submit" onclick="userHand(this)" value="도전" />
+
+      <script>
+		
+		//컴퓨터 선택
+      function computerHand(){
+			var comHand=Math.floor(Math.random()*3)+1
+			return comHand;
+	  }
+
+	  function userHand() {
+        console.log("user : " + document.getElementById('userHand').value);
+        var hand = document.getElementById('userHand').value;
+  		var comHand=computerHand();
+		console.log(comHand);
+		
+        if(hand=="가위"){
+      		var str = "";
+        	if(comHand==1){//무 가위
+      		str += "<input type='text'  id='userHand' /> ";
+      		str += "<input type='submit' onclick='userHand(this)' /><br />";
+      		
+			str += "<img src='./img/scissors.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/draw.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/scissors.jpg',";
+			str += "width='170', height='67'>";
+        		
+        	}else if(comHand==2){//패 바위
+      		str += "<input type='text'  id='userHand' /> ";
+      		str += "<input type='submit' onclick='userHand(this)' /><br />";
+      		
+			str += "<img src='./img/scissors.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/lose.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/rock.jpg',";
+			str += "width='170', height='67'>";
+        		
+        	}else if(comHand==3){//승 보
+      		str += "<input type='text'  id='userHand' /> ";
+      		str += "<input type='submit' onclick='userHand(this)' /><br />";
+      		
+			str += "<img src='./img/scissors.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/win.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/paper.jpg',";
+			str += "width='170', height='67'>";
+        		
+        	}
+			document.body.innerHTML = str;
+			
+			
+        }else if(hand=="바위"){
+      		var str = "";
+        	if(comHand==1){//승 가위
+      		str += "<input type='text'  id='userHand' /> ";
+      		str += "<input type='submit' onclick='userHand(this)' /><br />";
+      		
+			str += "<img src='./img/rock.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/win.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/scissors.jpg',";
+			str += "width='170', height='67'>";
+        		
+        	}else if(comHand==2){//무 바위
+      		str += "<input type='text'  id='userHand' /> ";
+      		str += "<input type='submit' onclick='userHand(this)' /><br />";
+      		
+			str += "<img src='./img/rock.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/draw.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/rock.jpg',";
+			str += "width='170', height='67'>";
+        		
+        	}else if(comHand==3){//패 보
+      		str += "<input type='text'  id='userHand' /> ";
+      		str += "<input type='submit' onclick='userHand(this)' /><br />";
+      		
+			str += "<img src='./img/rock.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/lose.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/paper.jpg',";
+			str += "width='170', height='67'>";
+        		
+        	}
+        	document.body.innerHTML = str;
+        }else if(hand=="보"){
+      		var str = "";
+        	if(comHand==1){//패 가위
+      		str += "<input type='text'  id='userHand' /> ";
+      		str += "<input type='submit' onclick='userHand(this)' /><br />";
+      		
+			str += "<img src='./img/paper.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/lose.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/scissors.jpg',";
+			str += "width='170', height='67'>";
+        		
+        	}else if(comHand==2){//승 바위
+      		str += "<input type='text'  id='userHand' /> ";
+      		str += "<input type='submit' onclick='userHand(this)' /><br />";
+      		
+			str += "<img src='./img/paper.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/win.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/rock.jpg',";
+			str += "width='170', height='67'>";
+        		
+        	}else if(comHand==3){//무 보
+      		str += "<input type='text'  id='userHand' /> ";
+      		str += "<input type='submit' onclick='userHand(this)' /><br />";
+      		
+			str += "<img src='./img/paper.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/draw.jpg',";
+			str += "width='170', height='67'>";
+			str += "<img src='./img/paper.jpg',";
+			str += "width='170', height='67'>";
+        		
+        	}
+        	document.body.innerHTML = str;
+        }else{
+      		var str = "";
+      		str += "<input type='text'  id='userHand' /> ";
+      		str += "<input type='submit' onclick='userHand(this)' /><br />";
+      		
+      		str += "다시 입력해 주세요";
+      		document.body.innerHTML = str;
+        }
+      }
+      </script>
+   </body>
+</html>

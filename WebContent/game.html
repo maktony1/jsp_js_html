@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+	<input type="text" id="userHand">
+	<input type="button" value="도전" onclick="userHanda(this)" >
+	
+		<script>
+		//컴퓨터 
+		function computerHand(){
+			var comHand=Math.floor(Math.random()*3)+1
+			document.write(comHand);
+		}
+		
+		//유저 
+		function userHand(obj){
+			console.log(obj, document.getElementById('userHand').value);
+	        var uHand = document.getElementById('userHand').value;
+			
+	        document.write(uHand);
+		}
+		
+		
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>rock-scissors-paper</title>
+      
+      
+   </head>
+   <body>
+
+      <input type="text"  id="choice" />
+      <button  onclick="startgame()"> 게임시작</button>
+      <br>
+      
+      <script type="text/javascript">
+      
+      //사용자
+      function myfunction(choice) {
+         
+         var User = choice;
+         
+         var img = document.createElement("img");
+         img.setAttribute("id","user");
+
+            if(User=='가위') {
+               img.setAttribute("src","img/scissors.jpg");
+            }else if(User=='바위'){
+               img.setAttribute("src","img/rock.jpg");
+            }else if(User=='보') {
+               img.setAttribute("src","img/paper.jpg");
+            }else{
+               alert('가위,바위, 보 중 하나를 입력하시오 \n 다시 입력하세요')
+            }
+         return document.body.appendChild(img);
+         
+         
+      }
+      
+      //컴퓨터선택
+      function ChoiceCom() {
+         var ChoiceCom = Math.floor(Math.random()*3)+1;
+   
+            if(ChoiceCom==1) {
+               ChoiceCom="가위"
+            }else if(ChoiceCom==2){
+               ChoiceCom="바위"
+            }else if(ChoiceCom==3){
+               ChoiceCom="보"
+            }
+            console.log("컴퓨터: "+ChoiceCom);
+            
+            return ChoiceCom;
+      }
+         
+      //컴퓨터 선택 출력
+      function comfunction(Computer) {
+         var compChoice = Computer;
+         
+         var img = document.createElement("img");
+         img.setAttribute("id","computer");
+         
+         
+         if(compChoice=="가위") {
+            img.setAttribute("src","img/scissors.jpg");
+         }else if(compChoice=="바위"){
+            img.setAttribute("src","img/rock.jpg");
+         }else if(compChoice=="보"){
+            img.setAttribute("src","img/paper.jpg"); 
+         }
+         return document.body.appendChild(img);
+         
+      }
+         
+         function checkwhowin(User, compChoice) {
+            var img = document.createElement("img");
+            img.setAttribute("id","verse");
+            
+            if((User=="가위"&&compChoice=="보")||(User=="바위" && compChoice=="가위")||(User=="보" && compChoice =="바위")){
+                img.setAttribute("src","img/win.jpg");   
+                    img.setAttribute("width", 130);
+                    img.setAttribute("height", 130);       
+            }
+            else if((User=="보" && compChoice =="가위")||(User=="바위" && compChoice=="보")||(User=="가위" && compChoice=="바위")) {
+                img.setAttribute("src","img/lose.jpg");   
+            }
+            else if((User=="가위" && compChoice=="가위")||(User=="바위" && compChoice=="바위")||(User=="보" && compChoice == "보")) {
+               img.setAttribute("src","img/draw.jpg");
+            }
+            else{
+               alert('오류');
+            }
+            console.log("사용자: "+User + "  컴퓨터: "+compChoice);
+            
+            return document.body.appendChild(img);
+         }
+
+         function startgame() {
+            var myChoice = document.getElementById("choice").value;
+            console.log("사용자입력: "+myChoice);
+            
+            var Computer = ChoiceCom();
+
+            myfunction(myChoice);
+            checkwhowin(myChoice, Computer);
+            comfunction(Computer);
+            
+            
+         }
+      
+      
+      </script>
+
+   
+   </body>
+</html>
